@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/bootstrap-3.3.7/css/bootstrap.css">
+    <title>Title</title>
+    <style>
+        .container{
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-offset-2 col-md-8">
+            <a href="/addQuestionnaire"><button type="button" class="btn btn-success">添加</button></a>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>
+                        <radio></radio>
+                    </th>
+                    <th>调查问卷名称</th>
+                    <th>问卷调查班级</th>
+                    <th>参与人数</th>
+                    <th>问卷选项</th>
+                    <th>调查地址</th>
+                    <th>查看评分</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for question in questions %}
+                    <tr>
+                        <td>
+                            <radio></radio>
+                        </td>
+                        <td>{{ question.title }}</td>
+                        <td>{{ question.cls.title }}</td>
+                        <td>{{ question.joinNum }}/{{ question.cls.userinfo_set.all.count }}</td>
+                        <td>
+                            <button>编辑问卷</button>
+                        </td>
+                        <td>{{ question.url }}/td>
+                        <td>
+                            <button>查看评分</button>
+                        </td>
+                        <td>
+                            <button>删除</button>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script src="/static/jquery-3.2.1.min.js"></script>
+<script src="/static/bootstrap-3.3.7/js/bootstrap.js"></script>
+</body>
+</html>
